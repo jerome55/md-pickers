@@ -1,3 +1,9 @@
+### 1.1.5
+
+#### Bugfixes
+
+* * removed .git/index from npm package (this fixes #43)
+
 ### 1.1.4
 
 #### Features
