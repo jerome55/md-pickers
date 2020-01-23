@@ -301,6 +301,9 @@ module.directive("mdpTimePicker", ["$mdpTimePicker", "$timeout", "$mdpLocale", f
                     '<md-input-container' + (noFloat ? ' md-no-float' : '') + ' md-is-error="isError()">' +
                         '<input name="{{ inputName }}" ng-model="model.$viewValue" ng-required="required()" type="{{ ::type }}"' + (angular.isDefined(attrs.mdpDisabled) ? ' ng-disabled="disabled"' : '') + ' aria-label="{{placeholder}}" placeholder="{{placeholder}}"' + (openOnClick ? ' ng-click="showPicker($event)" ' : '') + ' />' +
                     '</md-input-container>' +
+					'<md-button' + (angular.isDefined(attrs.mdpDisabled) ? ' ng-disabled="disabled"' : '') + ' class="md-icon-button" ng-click="updateTime(null, true)">' +
+                        '<md-icon class="material-icons">clear</md-icon>' +
+                    '</md-button>' +
                 '</div>';
         },
         scope: {
@@ -431,6 +434,7 @@ module.directive("mdpTimePicker", ["$mdpTimePicker", "$timeout", "$mdpLocale", f
 
                 ngModel.$render();
             }
+			scope.updateTime = updateTime;
 
             scope.showPicker = function(ev) {
                 $mdpTimePicker(ngModel.$modelValue, {
